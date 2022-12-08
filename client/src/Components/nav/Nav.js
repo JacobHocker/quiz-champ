@@ -1,11 +1,22 @@
 import React from 'react'
 import {NavLink as Link} from 'react-router-dom';
+import './Nav.css';
+
 
 function Nav() {
     return (
-        <div>
+        <div className='nav-container'>
             <Link to='/'>
-                <h1>Home Page</h1>
+                <p>Home Page</p>
+            </Link>
+            <Link to='/quizzes'>
+                <p>Quiz List</p>
+            </Link>
+            <Link to='/quiz-submit'>
+                <p>Submit Quiz</p>
+            </Link>
+            <Link to='/question-submit'>
+                <p>Submit Question</p>
             </Link>
         </div>
     )

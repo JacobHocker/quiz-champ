@@ -2,7 +2,9 @@ import React from 'react'
 
 function AdminQuestionSubmit() {
     return (
-        <div>AdminQuestionSubmit</div>
+        <div>
+            <h1>Question Submit</h1>
+        </div>
     )
 }
 

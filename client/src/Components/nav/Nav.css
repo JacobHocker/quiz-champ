@@ -1,0 +1,17 @@
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+.nav-container a {
+    color: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.nav-container a:visited {
+    color: white;
+}
