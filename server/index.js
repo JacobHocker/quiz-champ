@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //! QUESTION ROUTES
 
-//! POST QUESTION
+//? POST QUESTION
 app.post("/api/post/questions", (req, res) => {
     
     const quizId = req.body.quizId
@@ -30,25 +30,24 @@ app.post("/api/post/questions", (req, res) => {
     const correctAnswer = req.body.correctAnswer
 
     const sqlInsert = 
-    "INSERT INTO quizzes (quizId, questionContent, questionImage, choiceOne, choiceTwo, choiceThree, choiceFour, correctAnswer) VALUES (?,?,?,?,?,?,?,?)"
-    db.query(sqlInsert,
-        [quizId, questionContent, questionImage, choiceOne, choiceTwo, choiceThree, choiceFour, correctAnswer], 
+    "INSERT INTO questions (quizId, questionContent, questionImage, choiceOne, choiceTwo, choiceThree, choiceFour, correctAnswer) VALUES (?,?,?,?,?,?,?,?)"
+    db.query(sqlInsert, [quizId, questionContent, questionImage, choiceOne, choiceTwo, choiceThree, choiceFour, correctAnswer], 
         (err, result) => {
-        console.log(result)
+        console.log(err)
     })
 })
-//! GET ALL QUESTIONS BY QUIZ ID
+//? GET ALL QUESTIONS BY QUIZ ID
 app.get('/api/get/questions/:quizId', (req, res) => {
-    const sqlSelect = 
-    "SELECT * FROM questions WHERE quizId = ?"
-    db.query(sqlSelect, (err, result) => {
+    const quizId = req.params.quizId
+    const sqlSelect = "SELECT * FROM questions WHERE quizId = ?"
+    db.query(sqlSelect, quizId, (err, result) => {
         res.send(result)
     })
 })
 
 //! QUIZ ROUTES
 
-//! GET ALL QUIZZES
+//? GET ALL QUIZZES
 app.get('/api/get/quizzes', (req, res) => {
     const sqlSelect = 
     "SELECT * FROM quizzes"
@@ -56,8 +55,16 @@ app.get('/api/get/quizzes', (req, res) => {
         res.send(result)
     })
 })
+//? GET QUIZ BY ID
+app.get('/api/get/quiz/:id', (req, res) => {
+    const id = req.params.id
+    const sqlSelect = "SELECT * FROM quizzes WHERE id = ?"
+    db.query(sqlSelect, id, (err, result) => {
+        res.send(result)
+    })
+})
 
-//! POST QUIZ
+//? POST QUIZ
 app.post("/api/post/quizzes", (req, res) => {
     
     const quizImage = req.body.quizImage

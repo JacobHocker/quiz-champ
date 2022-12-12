@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 
 function QuizListContainer() {
@@ -12,13 +12,16 @@ function QuizListContainer() {
 
     return (
         <div>
+            
             <h1>Quiz List</h1>
             {quizList.map((val) => (
-                <div key={val.id}>
-                <img src={val.quizImage} alt={val.quizName} />
-                <h1>{val.quizName} | Quiz #: {val.id}</h1>
-                <h3>Category: {val.quizCategory}</h3>
-                </div>
+                <a href={`quiz/${val.id}`} key={val.id}>
+                    <div>
+                        <img src={val.quizImage} alt={val.quizName} />
+                        <h1>{val.quizName} | Quiz #: {val.id}</h1>
+                        <h3>Category: {val.quizCategory}</h3>
+                    </div>
+                </a>
             ))}
         </div>
     )

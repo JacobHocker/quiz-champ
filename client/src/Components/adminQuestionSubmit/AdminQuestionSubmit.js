@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Axios } from 'axios';
+import Axios from 'axios';
 
 function AdminQuestionSubmit() {
     const [quizId, setQuizId] = useState(0);
@@ -11,7 +11,7 @@ function AdminQuestionSubmit() {
     const [choiceFour, setChoiceFour] = useState('');
     const [correctAnswer, setCorrectAnswer] = useState('');
 
-    const submitQuiz = () => {
+    const submitQuestion = () => {
         Axios.post("http://localhost:2000/api/post/questions", {
         quizId: quizId, 
         questionContent: questionContent,
@@ -44,7 +44,7 @@ function AdminQuestionSubmit() {
                 <input type='text' name='choiceFour' onChange={(e) => setChoiceFour(e.target.value)}/>
                 <label>Correct Answer</label>
                 <input type='text' name='correctAnswer' onChange={(e) => setCorrectAnswer(e.target.value)}/>
-                <button onClick={submitQuiz}>Submit</button>
+                <button onClick={submitQuestion}>Submit</button>
             </div>
         </div>
     )
