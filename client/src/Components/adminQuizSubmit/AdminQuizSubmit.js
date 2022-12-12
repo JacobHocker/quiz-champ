@@ -5,12 +5,14 @@ function AdminQuizSubmit() {
     const [quizImage, setQuizImage] = useState('');
     const [quizName, setQuizName] = useState('');
     const [quizCategory, setQuizCategory] = useState('');
+    const [quizDescription, setQuizDescription] = useState('');
 
     const submitQuiz = () => {
-        Axios.post("http://localhost:2000/api/quizzes", {
+        Axios.post("http://localhost:2000/api/post/quizzes", {
         quizImage: quizImage, 
         quizName: quizName,
-        quizCategory: quizCategory
+        quizCategory: quizCategory,
+        quizDescription: quizDescription
         })
     };
 
@@ -24,6 +26,9 @@ function AdminQuizSubmit() {
                 <input type='text' name='quizName' onChange={(e) => setQuizName(e.target.value)}/>
                 <label>Quiz Category</label>
                 <input type='text' name='quizCategory' onChange={(e) => setQuizCategory(e.target.value)}/>
+                <label>Quiz Description</label>
+                <input type='text' name='quizDescription' onChange={(e) => setQuizDescription(e.target.value)}/>
+
 
                 <button onClick={submitQuiz}>Submit</button>
             </div>
