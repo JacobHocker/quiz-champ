@@ -5,7 +5,7 @@ import Nav from './Components/nav/Nav';
 import QuizListContainer from './Components/quizListContainer/QuizListContainer';
 import AdminQuizSubmit from './Components/adminQuizSubmit/AdminQuizSubmit';
 import AdminQuestionSubmit from './Components/adminQuestionSubmit/AdminQuestionSubmit';
-import QuizContainer from './Components/quizContainer/QuizContainer';
+import QuizDisplayContainer from './Components/quizDisplayContainer/QuizDisplayContainer';
 
 function App() {
   
@@ -18,7 +18,7 @@ function App() {
         <Route element={<QuizListContainer />} path='quizzes' />
         <Route element={<AdminQuizSubmit />} path='quiz-submit' />
         <Route element={<AdminQuestionSubmit />} path='question-submit' />
-        <Route element={<QuizContainer />} path='quiz/:id' />
+        <Route element={<QuizDisplayContainer />} path='quiz/:id' />
       </Routes>
     </div>
   );
