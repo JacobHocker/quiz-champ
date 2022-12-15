@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './AdminQuestionSubmit.css';
 import Axios from 'axios';
 
 function AdminQuestionSubmit() {
@@ -27,7 +28,7 @@ function AdminQuestionSubmit() {
     return (
         <div>
             <h1>Question Submit</h1>
-            <div className='form'>
+            <div className='admin-form'>
                 <label>Quiz Id</label>
                 <input type='number' name='quizId' onChange={(e) => setQuizId(e.target.value)}/>
                 <label>Question Content</label>

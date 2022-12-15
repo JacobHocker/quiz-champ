@@ -18,6 +18,9 @@ function Nav() {
             <Link to='/question-submit'>
                 <p>Submit Question</p>
             </Link>
+            <Link to='/login'>
+                <button>Register/Login</button>
+            </Link>
         </div>
     )
 }

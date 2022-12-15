@@ -31,7 +31,7 @@ function QuizPlay({questionList}) {
             </div>
 
 
-            {currQuestion == questionList.length - 1 ? 
+            {currQuestion === questionList.length - 1 ? 
                 <button onClick={finishQuiz}>Finish Quiz</button>
                 :
                 <button onClick={nextQuestion}>Next Question</button>
