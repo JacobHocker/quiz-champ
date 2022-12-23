@@ -15,6 +15,41 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+//! USER ROUTES
+//? REGISTER USER
+app.post('/register', (req, res) => {
+
+    const username = req.body.username
+    const password = req.body.password
+    const bio = req.body.bio 
+    const crowns = req.body.crowns 
+
+    db.query("INSERT INTO users (username, password, bio, crowns) VALUES (?,?,?,?)", 
+    [username, password, bio, crowns], (err, result) => {
+        console.log(result)
+    })
+})
+// ? LOGIN USER
+app.post('/login', (req, res) => {
+    const username = req.body.username
+    const password = req.body.password
+
+    db.query(
+        "SELECT * FROM users WHERE username = ? AND password = ?", 
+        [username, password], 
+        (err, result) => {
+            if (err) {
+                res.send({err: err})
+            } else {
+                if (result.length > 0) {
+                    res.send(result)
+                } else {
+                    res.send({message: "Wrong Username/Password Combination"})
+                }
+            }
+        })
+})
+
 //! QUESTION ROUTES
 
 //? POST QUESTION
@@ -63,7 +98,6 @@ app.get('/api/get/quiz/:id', (req, res) => {
         res.send(result)
     })
 })
-
 //? POST QUIZ
 app.post("/api/post/quizzes", (req, res) => {
     

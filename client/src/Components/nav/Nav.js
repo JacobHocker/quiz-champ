@@ -3,7 +3,7 @@ import {NavLink as Link} from 'react-router-dom';
 import './Nav.css';
 
 
-function Nav() {
+function Nav({ user }) {
     return (
         <div className='nav-container'>
             <Link to='/'>
@@ -21,6 +21,7 @@ function Nav() {
             <Link to='/login'>
                 <button>Register/Login</button>
             </Link>
+            {user === null ? <div></div> : <p>{user.username}</p>}
         </div>
     )
 }

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import  Axios  from 'axios';
 import './UserRegister.css'
 
 function UserRegister() {
@@ -7,6 +8,18 @@ function UserRegister() {
     const [bioReg, setBioReg] = useState('');
     const [crowns, setCrowns] = useState(0);
 
+    const register = () => {
+        Axios.post("http://localhost:2000/register", {
+            username: usernameReg,
+            password: passwordReg,
+            bio: bioReg,
+            crowns: crowns
+        })
+        .then(() => setCrowns(crowns))
+        .then((response) =>{
+            console.log(response)
+        })
+    }
     return (
         <div className='register-form-container'>
             <div className='register-form'>
@@ -17,6 +30,7 @@ function UserRegister() {
                 <input type='password' name='password' onChange={(e) => setPasswordReg(e.target.value)}/>
                 <label>Bio:</label>
                 <textarea type='text' rows={6} placeholder='Tell a little about yourself' onChange={(e) => setBioReg(e.target.value)}/>
+                <button onClick={register}>Register Account</button>
             </div>
             <div className='link-login-container'>
                 <h3>Already have an account?</h3>

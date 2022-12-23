@@ -11,12 +11,12 @@ import UserRegister from './Components/userRegister/UserRegister';
 import UserLogin from './Components/userLogin/UserLogin';
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   
   return (
     <div className="App">
-      <Nav />
+      <Nav user={user}/>
       <Routes>
         <Route element={<Home />} path='/' />
         <Route element={<QuizListContainer />} path='quizzes' />
@@ -24,7 +24,7 @@ function App() {
         <Route element={<AdminQuestionSubmit />} path='question-submit' />
         <Route element={<QuizDisplayContainer />} path='quiz/:id' />
         <Route element={<UserRegister />} path='register' />
-        <Route element={<UserLogin />} path='login' />
+        <Route element={<UserLogin user={user} setUser={setUser}/>} path='login' />
       </Routes>
     </div>
   );
