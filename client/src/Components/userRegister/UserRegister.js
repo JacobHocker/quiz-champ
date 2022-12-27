@@ -8,6 +8,8 @@ function UserRegister() {
     const [bioReg, setBioReg] = useState('');
     const [crowns, setCrowns] = useState(0);
 
+    
+
     const register = () => {
         Axios.post("http://localhost:2000/register", {
             username: usernameReg,
